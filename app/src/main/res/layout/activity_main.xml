@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/config_title"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/perm_section_title"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btn_otorgar_permiso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/perm_write_settings"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btn_ignorar_bateria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/perm_battery_opt"
+            android:layout_marginBottom="24dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modo_titulo"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <RadioGroup
+            android:id="@+id/rg_modo_funcionamiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rb_modo_inteligente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modo_inteligente"/>
+
+            <RadioButton
+                android:id="@+id/rb_modo_alternar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modo_alternar"/>
+
+            <RadioButton
+                android:id="@+id/rb_modo_reloj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modo_reloj"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_rotacion_actual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/rot_unknown"
+            android:textStyle="italic"
+            android:textColor="?android:attr/textColorSecondary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/modo_desc_info"
+            android:textSize="12sp"
+            android:textColor="#666666"/>
+
+    </LinearLayout>
+</ScrollView>

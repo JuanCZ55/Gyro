@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Gyro</string>
+    <string name="config_title">Configuración de Gyro</string>
+    <string name="perm_section_title">Sección de Permisos</string>
+    <string name="perm_write_settings">1. Permiso de Escritura de Sistema</string>
+    <string name="perm_battery_opt">2. Ignorar Optimización de Batería</string>
+    <string name="perm_granted">Concedido</string>
+    <string name="modo_titulo">Modo de funcionamiento del botón</string>
+    <string name="modo_inteligente">Modo Inteligente (Sensor)</string>
+    <string name="modo_alternar">Modo Alternar (V/H)</string>
+    <string name="modo_reloj">Modo Reloj (Secuencial)</string>
+    <string name="modo_desc_info">• Inteligente: Detecta cómo sostienes el móvil.\n• Alternar: Cambia solo entre Vertical y Horizontal.\n• Reloj: Gira 90° en cada toque.\n\nNota: Si el botón se ve oscuro o no responde, abre esta app una vez para reactivarlo.</string>
+    <string name="toast_modo_updated">Modo actualizado</string>
+    <string name="toast_perm_already">El permiso ya está concedido.</string>
+
+    <string name="tile_label">Girar</string>
+    <string name="rot_vertical">Vertical</string>
+    <string name="rot_horiz_izq">Horizontal Izq.</string>
+    <string name="rot_horiz_der">Horizontal Der.</string>
+    <string name="rot_vert_inv">Vertical Inv.</string>
+    <string name="rot_auto">Automático</string>
+    <string name="status_current_rotation">Rotación actual: %s</string>
+    <string name="rot_unknown">Desconocido</string>
+</resources>
