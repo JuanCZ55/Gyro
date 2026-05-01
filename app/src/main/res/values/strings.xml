@@ -15,10 +15,14 @@
 
     <string name="tile_label">Girar</string>
     <string name="rot_vertical">Vertical</string>
-    <string name="rot_horiz_izq">Horizontal Izq.</string>
-    <string name="rot_horiz_der">Horizontal Der.</string>
+    <string name="rot_horiz_izq">Izquierda H</string>
+    <string name="rot_horiz_der">Derecha H</string>
     <string name="rot_vert_inv">Vertical Inv.</string>
     <string name="rot_auto">Automático</string>
     <string name="status_current_rotation">Rotación actual: %s</string>
     <string name="rot_unknown">Desconocido</string>
+
+    <string name="notif_channel_name">Servicio de Rotación</string>
+    <string name="notif_title">Control de rotación activo</string>
+    <string name="notif_content">Gyro está gestionando la orientación de la pantalla.</string>
 </resources>
