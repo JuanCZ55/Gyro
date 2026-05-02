@@ -13,7 +13,7 @@
     <string name="toast_modo_updated">Modo actualizado</string>
     <string name="toast_perm_already">El permiso ya está concedido.</string>
 
-    <string name="tile_label">Girar</string>
+    <string name="tile_label">Giro</string>
     <string name="rot_vertical">Vertical</string>
     <string name="rot_horiz_izq">Izquierda H</string>
     <string name="rot_horiz_der">Derecha H</string>
