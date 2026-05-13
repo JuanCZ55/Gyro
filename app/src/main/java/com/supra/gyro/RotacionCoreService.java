@@ -43,18 +43,31 @@ public class RotacionCoreService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent != null && ACTION_STOP_SERVICE.equals(intent.getAction())) {
+        // 1. Si el sistema reinicia el servicio (intent nulo), no hacemos nada con la rotación
+        if (intent == null) {
+            startForegroundService();
+            return START_STICKY;
+        }
+
+        String action = intent.getAction();
+
+        // 2. Detener el servicio si se solicita
+        if (ACTION_STOP_SERVICE.equals(action)) {
             stopSelf();
             return START_NOT_STICKY;
         }
 
+        // 3. Siempre asegurar que estamos en primer plano
         startForegroundService();
-        
-        if (isFirstStartCommand) {
-            isFirstStartCommand = false;
-            procesarRotacionInicial();
-        } else {
-            procesarCicloDeRotacion();
+
+        // 4. SOLO procesar rotación si la acción es explícita del botón
+        if (ACTION_TRIGGER_ROTATION.equals(action)) {
+            if (isFirstStartCommand) {
+                isFirstStartCommand = false;
+                procesarRotacionInicial();
+            } else {
+                procesarCicloDeRotacion();
+            }
         }
         
         return START_STICKY;
@@ -101,16 +114,13 @@ public class RotacionCoreService extends Service {
 
         switch (modo) {
             case MainActivity.MODO_INTELIGENTE:
-                // En modo inteligente, re-detectamos con el sensor
                 ejecutarModoInteligente();
                 break;
             case MainActivity.MODO_ALTERNAR:
-                // Ciclo infinito: Vertical (0) -> Horizontal (90) -> Vertical (0)
                 int nuevaAlt = (actual == Surface.ROTATION_0) ? Surface.ROTATION_90 : Surface.ROTATION_0;
                 aplicarRotacion(nuevaAlt);
                 break;
             case MainActivity.MODO_RELOJ:
-                // Ciclo infinito: 0 -> 90 -> 180 -> 270 -> 0
                 int nuevaReloj;
                 switch (actual) {
                     case Surface.ROTATION_0: nuevaReloj = Surface.ROTATION_90; break;
@@ -141,7 +151,7 @@ public class RotacionCoreService extends Service {
                 }
 
                 aplicarRotacion(nuevaRotacion);
-                this.disable();
+                this.disable(); // Apagado inmediato para ser silencioso
             }
         };
 
@@ -155,7 +165,6 @@ public class RotacionCoreService extends Service {
     private void aplicarRotacion(int rotacion) {
         if (Settings.System.canWrite(this)) {
             try {
-                // Forzar que la rotación automática esté desactivada
                 Settings.System.putInt(getContentResolver(), Settings.System.ACCELEROMETER_ROTATION, 0);
                 Settings.System.putInt(getContentResolver(), Settings.System.USER_ROTATION, rotacion);
                 
@@ -174,7 +183,6 @@ public class RotacionCoreService extends Service {
     @Override
     public void onDestroy() {
         isRunning = false;
-        // NO reactivamos la rotación automática aquí para cumplir con la petición del usuario.
         try {
             TileService.requestListeningState(this, new ComponentName(this, MiBotonRotacionService.class));
         } catch (Exception e) {
